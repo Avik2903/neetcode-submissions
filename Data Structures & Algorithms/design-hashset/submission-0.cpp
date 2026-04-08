@@ -1,16 +1,27 @@
-class Solution {
+class MyHashSet {
 public:
-    int majorityElement(vector<int>& nums) {
-        unordered_map<int,int> map;
-        for(int i=0;i<nums.size();i++)
-        {
-            map[nums[i]]++;
-        }
-        for(auto x:map)
-        {
-            if(x.second>nums.size()/2)
-                return x.first;
-        }
-        return {};
+vector<bool> v;
+    MyHashSet() {
+       v = vector<bool>(1000001, false); 
+    }
+    
+    void add(int key) {
+       v[key]=true; 
+    }
+    
+    void remove(int key) {
+        v[key]=false;
+    }
+    
+    bool contains(int key) {
+       return v[key]; 
     }
 };
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet* obj = new MyHashSet();
+ * obj->add(key);
+ * obj->remove(key);
+ * bool param_3 = obj->contains(key);
+ */
